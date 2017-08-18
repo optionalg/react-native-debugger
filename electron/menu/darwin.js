@@ -14,6 +14,7 @@ import {
   zoom,
   resetZoom,
   haveOpenedWindow,
+  toggleOpenInEditor,
   toggleDeviceSync,
 } from './util';
 
@@ -36,6 +37,10 @@ export default ({ iconPath }) => [
       item('New Window', 'Command+T', () =>
         createWindow({ iconPath, isPortSettingRequired: haveOpenedWindow() })
       ),
+      item('Enable open in editor for console log', n, () => toggleOpenInEditor(getWin()), {
+        type: 'checkbox',
+        checked: false,
+      }),
       item('Toggle Device Sync', n, () => toggleDeviceSync()),
       separator,
       item('Minimize', 'Command+M', n, { selector: 'performMiniaturize:' }),
